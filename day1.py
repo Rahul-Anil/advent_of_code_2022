@@ -1,22 +1,32 @@
+# def part1(input: str) -> int:
+#     elves = input.split("\n\n").join("")
+#     calPerElf = []
+#     for cal in elves:
+#         temp = [int(t) for t in cal.split("\n")]
+#         calPerElf.append(temp)
+#     x = [sum(c) for c in calPerElf]
+#     return max(x)
+
+
 def part1(input: str) -> int:
-    elves = input.split("\n\n")
-    calPerElf = []
-    for cal in elves:
-        temp = [int(t) for t in cal.split("\n")]
-        calPerElf.append(temp)
-    x = [sum(c) for c in calPerElf]
-    return max(x)
+    C = []
+    for elf in input.split("\n\n"):
+        c = 0
+        for cal in elf.split("\n"):
+            c += int(cal)
+        C.append(c)
+    return max(C)
 
 
 def part2(input: str) -> int:
-    elves = input.split("\n\n")
-    calPerElf = []
-    for cal in elves:
-        temp = [int(t) for t in cal.split("\n")]
-        calPerElf.append(temp)
-    x = [sum(c) for c in calPerElf]
-    x.sort(reverse=True)
-    return x[0] + x[1] + x[2]
+    C = []
+    for elf in input.split("\n\n"):
+        c = 0
+        for cal in elf.split("\n"):
+            c += int(cal)
+        C.append(c)
+    C.sort(reverse=True)
+    return sum(C[:3])
 
 
 def test():
@@ -36,5 +46,3 @@ if __name__ == "__main__":
 
     test()
     print(f"SOLUTION")
-    print(f"P1: {part1(input)}")
-    print(f"P2: {part2(input)}")
