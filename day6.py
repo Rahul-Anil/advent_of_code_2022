@@ -1,10 +1,21 @@
 def part1(input: str) -> int:
-    print(f"input: {input}")
-    return 0
+    data = input.strip()
+    for i in range(0, len(data) - 4):
+        tempSet = set(data[i : i + 4])
+        if len(tempSet) == 4:
+            break
+
+    return i + 4
 
 
 def part2(input: str) -> int:
-    return 0
+    data = input.strip()
+    for i in range(0, len(data) - 14):
+        tempSet = set(data[i : i + 14])
+        if len(tempSet) == 14:
+            break
+
+    return i + 14
 
 
 def test():
@@ -13,9 +24,9 @@ def test():
         input = f.read()
 
     print(f"P1: {part1(input)}")
-    assert part1(input) == 0
+    assert part1(input) == 7
     print(f"P2: {part2(input)}")
-    assert part2(input) == 0
+    assert part2(input) == 19
     print("\n")
 
 
@@ -25,5 +36,5 @@ if __name__ == "__main__":
 
     test()
     print("SOLUTION")
-    # print(f"P1: {part1(input)}")
-    # print(f"P2: {part2(input)}")
+    print(f"P1: {part1(input)}")
+    print(f"P2: {part2(input)}")
