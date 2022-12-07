@@ -23,7 +23,7 @@ class dir:
         return self if self.parent is None else self.parent.root
 
 
-def part1(input: str):
+def solve(input: str):
     stack = []
     input = input.splitlines()
     cwd = dir(name="/", parent=None)
@@ -45,16 +45,29 @@ def part1(input: str):
             else:
                 cwd.touch(x, y)
 
+    ## part1
     dirSize = {}
     sum = 0
     for s in stack:
         dirSize[s.name] = s.getSize()
         if s.getSize() <= 100000:
-            
+            sum += s.getSize()
 
-    print(dirSize)
+    print(f"sum: {sum}")
+
+    ## part2
+    unusedSpace = 70000000 - dirSize["/"]
+    spaceReq = 30000000 - unusedSpace
+    minStack = []
+    for k, v in dirSize.items():
+        if v > spaceReq:
+            minStack.append(v)
+
+    print(f"min: {min(minStack)}")
 
 
 if __name__ == "__main__":
     input = open("./input/sample_inputs/day_7_sample.txt").read().strip()
-    part1(input)
+    inputMain = open("./input/day7.txt").read().strip()
+    solve(input)
+    solve(inputMain)
